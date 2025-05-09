@@ -11,11 +11,22 @@ RUN apt-get update && \
     libtesseract-dev \
     libgl1-mesa-glx \
     libglib2.0-0 \
-    libportaudio2 \
-    libportaudiocpp0 \
     libasound-dev \
-    libportaudio-dev && \
+    wget \
+    make \
+    unzip && \
     rm -rf /var/lib/apt/lists/*
+
+# Build and install PortAudio from source
+RUN wget http://www.portaudio.com/archives/pa_stable_v190700_20210406.tgz && \
+    tar -xzf pa_stable_v190700_20210406.tgz && \
+    cd portaudio && \
+    ./configure && \
+    make && \
+    make install && \
+    ldconfig && \
+    cd .. && \
+    rm -rf portaudio pa_stable_v190700_20210406.tgz
 
 WORKDIR /app
 
@@ -24,7 +35,6 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./app ./app
-# COPY ./tests ./tests
 
 ENV TESSERACT_PATH=/usr/bin/tesseract
 
