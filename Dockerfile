@@ -6,10 +6,10 @@ ENV PYTHONUNBUFFERED=1
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     build-essential \
-    libasound-dev \
+    libasound2-dev \
     libportaudio2 \
     libportaudiocpp0 \
-    libasound2-dev \
+    portaudio19-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
