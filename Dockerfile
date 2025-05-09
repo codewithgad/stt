@@ -10,7 +10,11 @@ RUN apt-get update && \
     python3-dev \
     libtesseract-dev \
     libgl1-mesa-glx \
-    libglib2.0-0 && \
+    libglib2.0-0 \
+    libportaudio2 \
+    libportaudiocpp0 \
+    libasound-dev \
+    libportaudio-dev && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
