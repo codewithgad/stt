@@ -5,28 +5,12 @@ ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    tesseract-ocr \
-    gcc \
-    python3-dev \
-    libtesseract-dev \
-    libgl1-mesa-glx \
-    libglib2.0-0 \
+    build-essential \
     libasound-dev \
-    wget \
-    make \
-    unzip && \
-    rm -rf /var/lib/apt/lists/*
-
-# Build and install PortAudio from source
-RUN wget http://www.portaudio.com/archives/pa_stable_v190700_20210406.tgz && \
-    tar -xzf pa_stable_v190700_20210406.tgz && \
-    cd portaudio && \
-    ./configure && \
-    make && \
-    make install && \
-    ldconfig && \
-    cd .. && \
-    rm -rf portaudio pa_stable_v190700_20210406.tgz
+    libportaudio2 \
+    libportaudiocpp0 \
+    libasound2-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
