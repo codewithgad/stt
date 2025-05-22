@@ -4,10 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+pyaudio = "*"
 fastapi = "*"
 uvicorn = "*"
+websockets = "*"
 openai-whisper = "*"
-pyaudio = "*"
+ffmpeg-python = "*"
+python-multipart = "*"
 
 [dev-packages]
 

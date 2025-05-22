@@ -1,4 +1,3 @@
-# app/services/stt_service.py
 import os
 import tempfile
 import whisper
@@ -9,7 +8,7 @@ from fastapi import WebSocket
 
 SAMPLE_RATE = 16000
 CHUNK_SIZE = 1024
-RECORD_SECONDS = 5  # Duration per transcription chunk
+RECORD_SECONDS = 1
 
 class MicrophoneRecorder:
     def __init__(self, rate=SAMPLE_RATE, chunk_size=CHUNK_SIZE):
